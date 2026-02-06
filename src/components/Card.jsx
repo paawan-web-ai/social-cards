@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 const Card = (props) => {
   const [follow, setfollow] = useState("Follow")
+  const [count, setcount] = useState(props.followers)
   return (
     <div className='bg-white w-62 h-100 rounded-2xl overflow-hidden '>
       <div className='w-full h-full p-2 relative '>
@@ -17,15 +18,17 @@ const Card = (props) => {
             </div>
             <div className='flex gap-3  px-1 text-white'>
                 <div className='flex   '>
-                <p className=' rounded-xl py-1 px-2 font-semibold'><i className="ri-user-line "></i> {props.followers}</p>
+                <p  className=' rounded-xl py-1 px-2 font-semibold'><i className="ri-user-line "></i> {count}</p>
                 <p className=' rounded-xl py-1 px-2 font-semibold'><i class="ri-checkbox-multiple-line "></i> {props.posts}</p>
                 </div>
                 <button 
                 onClick={(e)=>{
                   if(follow==="Follow"){
                    setfollow("Unfollow")
+                   setcount(count + 1)
                    }else{
                     setfollow("Follow")
+                    setcount(count -1)
                    }
                 }}
                 className='bg-white text-black py-1 px-3 rounded-xl font-semibold w-22'>{follow}
